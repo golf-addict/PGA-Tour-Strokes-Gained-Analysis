@@ -18,7 +18,7 @@ WHERE finish = 1
 | ------------ | ----------- | ----------- | ----------- | ---------------- | --------------- | ------------- |
 | 1.2369421487603305 | 0.4280165289256198 | 1.30698347107438 | 0.6847933884297516 | 1.6649586776859508 | 1.9917768595041316 | 3.6397107438016527 |
 
-Analysis: Of the 4 official strokes gained categories (sg_putt, sg_arg, sg_app, and sg_ott), we can see that tournament 
+**Analysis:** Of the 4 official strokes gained categories (sg_putt, sg_arg, sg_app, and sg_ott), we can see that tournament 
 winners gain the most strokes on approach shots.  Putting is a close second, with tee shots and shots around the green 
 contributing significantly fewer strokes gained compared to approach shots and putts.
 
@@ -59,3 +59,10 @@ CROSS JOIN
 | top_10_putt_avg_fin | top_10_arg_avg_fin | top_10_app_avg_fin | top_10_ott_avg_fin | top_10_putt_arg_avg_fin | top_10_app_ott_avg_fin |
 | ------------------- | ------------------ | ------------------ | ------------------ | ----------------------- | ---------------------- |
 | 19.629674306393245  | 25.926222935044105 | 18.430181086519112 | 22.810897435897434 | 16.69935170178282       | 14.814245244840146     | 
+
+**Analysis:** Here we see a similar trend to the previous query.  The four official strokes gained categories are in the same order - 
+approach, putting, off the tee, and around the green - in terms of where a player in the top 10 in each category will finish (on average).  The 
+average finishes for players in the top 10 in approach shots and putts are very similar.  And being in the top 10 off the tee or around the greens 
+leads (on average) to a finish several spots lower.
+
+
