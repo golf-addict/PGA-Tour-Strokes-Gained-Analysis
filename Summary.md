@@ -65,4 +65,7 @@ approach, putting, off the tee, and around the green - in terms of where a playe
 average finishes for players in the top 10 in approach shots and putts are very similar.  And being in the top 10 off the tee or around the greens 
 leads (on average) to a finish several spots lower.
 
+In the combined categories, ball-striking once again wins out over short game with the top 10 ball-strikers finishing roughly 2 spots higher
+than the top 10 in the short game.
+
 
