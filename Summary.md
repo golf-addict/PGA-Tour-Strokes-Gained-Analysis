@@ -69,3 +69,54 @@ In the combined categories, ball-striking once again wins out over short game wi
 than the top 10 in the short game.
 
 
+**3) Show the number of winners grouped by rank in each of the strokes gained categories.**
+```sql
+SELECT 
+	sg_putt_rank, 
+	COUNT(*) AS num_winners
+FROM ptdr_ranks_v3
+WHERE finish = 1
+GROUP BY sg_putt_rank
+
+
+SELECT 
+	sg_arg_rank, 
+	COUNT(*) AS num_winners
+FROM ptdr_ranks_v3
+WHERE finish = 1
+GROUP BY sg_arg_rank
+
+
+SELECT 
+	sg_app_rank, 
+	COUNT(*) AS num_winners
+FROM ptdr_ranks_v3
+WHERE finish = 1
+GROUP BY sg_app_rank
+
+
+SELECT 
+	sg_ott_rank, 
+	COUNT(*) AS num_winners
+FROM ptdr_ranks_v3
+WHERE finish = 1
+GROUP BY sg_ott_rank
+
+
+SELECT 
+	sg_putt_arg_rank, 
+	COUNT(*) AS num_winners
+FROM ptdr_ranks_v3
+WHERE finish = 1
+GROUP BY sg_putt_arg_rank
+
+
+SELECT 
+	sg_app_ott_rank, 
+	COUNT(*) AS num_winners
+FROM ptdr_ranks_v3
+WHERE finish = 1
+GROUP BY sg_app_ott_rank
+```
+
+**Analysis:** See Tableau visualizations.
