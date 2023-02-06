@@ -120,3 +120,28 @@ GROUP BY sg_app_ott_rank
 ```
 
 **Analysis:** See Tableau visualizations.
+
+
+**4) Show the percentage of winners coming from different ranges of short game ranks.**
+```sql
+SELECT 
+	SUM(CASE WHEN sg_putt_arg_rank <= 5 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _1_to_5
+	, SUM(CASE WHEN sg_putt_arg_rank BETWEEN 6 AND 10 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _6_to_10
+	, SUM(CASE WHEN sg_putt_arg_rank BETWEEN 11 AND 15 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _11_to_15
+	, SUM(CASE WHEN sg_putt_arg_rank BETWEEN 16 AND 20 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _16_to_20
+	, SUM(CASE WHEN sg_putt_arg_rank > 20 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _20_plus
+FROM (
+	SELECT 
+		sg_putt_arg_rank, 
+		COUNT(*) AS num_winners
+	FROM ptdr_ranks_v3
+	WHERE finish = 1
+	GROUP BY sg_putt_arg_rank
+)
+```
+
+| _1_to_5 | _6_to_10 | _11_to_15 | _16_to_20 | _20_plus |
+| ------- | -------- | --------- | --------- | -------- |
+|44.21487603305785 | 19.834710743801654 | 10.330578512396695 | 10.330578512396695 | 15.289256198347108 |
+
+**Analysis:**
