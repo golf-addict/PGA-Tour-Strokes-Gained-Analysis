@@ -145,3 +145,28 @@ FROM (
 |44.21487603305785 | 19.834710743801654 | 10.330578512396695 | 10.330578512396695 | 15.289256198347108 |
 
 **Analysis:**
+
+
+**5) Show the percentage of winners coming from different ranges of ball-striking ranks.**
+```sql
+SELECT 
+	SUM(CASE WHEN sg_app_ott_rank <= 5 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _1_to_5
+	, SUM(CASE WHEN sg_app_ott_rank BETWEEN 6 AND 10 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _6_to_10
+	, SUM(CASE WHEN sg_app_ott_rank BETWEEN 11 AND 15 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _11_to_15
+	, SUM(CASE WHEN sg_app_ott_rank BETWEEN 16 AND 20 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _16_to_20
+	, SUM(CASE WHEN sg_app_ott_rank > 20 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _20_plus
+FROM (
+	SELECT 
+		sg_app_ott_rank, 
+		COUNT(*) AS num_winners
+	FROM ptdr_ranks_v3
+	WHERE finish = 1
+	GROUP BY sg_app_ott_rank
+)
+```
+
+| _1_to_5 | _6_to_10 | _11_to_15 | _16_to_20 | _20_plus |
+| ------- | -------- | --------- | --------- | -------- |
+| 53.30578512396694 | 23.140495867768596 | 9.090909090909092 | 4.545454545454546 | 9.917355371900827 |
+
+**Analysis:**
