@@ -189,7 +189,7 @@ We can see that ball-striking seems to have a greater impact on a player's odds 
 that the short game is unimportant.  Clearly, most tournament winners are ranked highly in both ball-striking and short game.
 
 
-**7)How many winners are the best putter from amongst the top-10 in ball-striking?**
+**7) How many winners are the best putter from amongst the top-10 in ball-striking?**
 ```sql
 SELECT COUNT(*)
 FROM (
@@ -216,5 +216,4 @@ WHERE finish = 1
 
 **Analysis:** Anyone who watches golf tournaments on TV has likely heard one of the commentators say that the winner is typically "the best putter 
 from among the best ball-strikers".  I wanted to see if there was any truth to this statement.  The query above shows that 91 of the 242 tournament 
-winners in the dataset were indeed the highest ranked putter from among the top 10 in ball-striking.  So, the best putter from among the best ball-
-strikers seems to win about 38% of the time.
+winners in the dataset were indeed the highest ranked putter from among the top 10 in ball-striking.  So, the best putter from among the best ball-strikers seems to win about 38% of the time.
