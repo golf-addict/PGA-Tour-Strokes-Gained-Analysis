@@ -5,6 +5,10 @@ FROM ptdr_ranks_v3
 WHERE finish = 1
 ```
 
+| num_winners |
+| ----------- |
+| 242 |
+
 **Analysis:** The dataset contains a total of 242 tournament winners.
 
 
