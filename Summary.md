@@ -170,3 +170,31 @@ FROM (
 | 53.30578512396694 | 23.140495867768596 | 9.090909090909092 | 4.545454545454546 | 9.917355371900827 |
 
 **Analysis:**
+
+
+**6)How many winners are the best putter from amongst the top-10 in ball-striking?**
+```sql
+SELECT COUNT(*)
+FROM (
+	SELECT
+	    "tournament id",
+	    player,
+	    "tournament name",
+	    finish,
+	    MIN(sg_putt_rank),
+	    sg_app_ott_rank
+	FROM (
+		SELECT *
+		FROM ptdr_ranks_v3
+		WHERE sg_app_ott_rank <= 10
+	)
+	GROUP BY "tournament id"
+)
+WHERE finish = 1
+```
+
+| COUNT(*) |
+| -------- |
+| ------91 |
+
+**Analysis:** Of the tournament winners, 91 are ranked as the best putter from among the top-10 ball-strikers.
