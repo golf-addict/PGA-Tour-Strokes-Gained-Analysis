@@ -1,4 +1,14 @@
-**1) List the average strokes gained by tournament winners in each of the strokes gained 
+**1) Show the total number of winners in the dataset.**
+```sql
+SELECT COUNT(*) AS num_winners
+FROM ptdr_ranks_v3
+WHERE finish = 1
+```
+
+**Analysis:** The dataset contains a total of 242 tournament winners.
+
+
+**2) List the average strokes gained by tournament winners in each of the strokes gained 
 categories including the combined short game and ball-striking categories.**
 
 ```sql
@@ -26,7 +36,7 @@ I also included the two combined categories of sg_putt_arg (i.e. short game) and
 winners gain roughly 1/3 more strokes in ball-striking vs. the short game.
 
 
-**2) Show the average finish by the top-10 players in each of the strokes gained categories.**
+**3) Show the average finish by the top-10 players in each of the strokes gained categories.**
 
 ```sql
 SELECT * 
@@ -69,7 +79,7 @@ In the combined categories, ball-striking once again wins out over short game wi
 than the top 10 in the short game.
 
 
-**3) Show the number of winners grouped by rank in each of the strokes gained categories.**
+**4) Show the number of winners grouped by rank in each of the strokes gained categories.**
 ```sql
 SELECT 
 	sg_putt_rank, 
@@ -122,7 +132,7 @@ GROUP BY sg_app_ott_rank
 **Analysis:** See Tableau visualizations.
 
 
-**4) Show the percentage of winners coming from different ranges of short game ranks.**
+**5) Show the percentage of winners coming from different ranges of short game ranks.**
 ```sql
 SELECT 
 	SUM(CASE WHEN sg_putt_arg_rank <= 5 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _1_to_5
@@ -144,10 +154,11 @@ FROM (
 | ------- | -------- | --------- | --------- | -------- |
 |44.21487603305785 | 19.834710743801654 | 10.330578512396695 | 10.330578512396695 | 15.289256198347108 |
 
-**Analysis:**
+**Analysis:** Over 65% of tournament winners were ranked among the top 10 in the combined (putting + around the green) short game category.  It's clear
+that having a strong short game increases a player's odds of winning.
 
 
-**5) Show the percentage of winners coming from different ranges of ball-striking ranks.**
+**6) Show the percentage of winners coming from different ranges of ball-striking ranks.**
 ```sql
 SELECT 
 	SUM(CASE WHEN sg_app_ott_rank <= 5 THEN num_winners ELSE 0 END) * 100.00 / SUM(num_winners) AS _1_to_5
@@ -169,10 +180,16 @@ FROM (
 | ------- | -------- | --------- | --------- | -------- |
 | 53.30578512396694 | 23.140495867768596 | 9.090909090909092 | 4.545454545454546 | 9.917355371900827 |
 
-**Analysis:**
+**Analysis:**  Over 76% of tournament winners were ranked among the top 10 in the combined (approach + off the tee) ball-striking category.  This
+is 11 percentage points higher than the number of winners who placed in the top 10 in the short game category.  A majority of tournament winners were 
+in the top 5 in ball-striking, while less than 10% of winners finished worse than 20th in ball-striking (compared with over 15% of winners who 
+finished worse than 20th in the short game).
+
+We can see that ball-striking seems to have a greater impact on a player's odds of winning than a player's short game.  This isn't to say 
+that the short game is unimportant.  Clearly, most tournament winners are ranked highly in both ball-striking and short game.
 
 
-**6)How many winners are the best putter from amongst the top-10 in ball-striking?**
+**7)How many winners are the best putter from amongst the top-10 in ball-striking?**
 ```sql
 SELECT COUNT(*)
 FROM (
@@ -195,6 +212,9 @@ WHERE finish = 1
 
 | COUNT(*) |
 | -------- |
-| ------91 |
+| 91 |
 
-**Analysis:** Of the tournament winners, 91 are ranked as the best putter from among the top-10 ball-strikers.
+**Analysis:** Anyone who watches golf tournaments on TV has likely heard one of the commentators say that the winner is typically "the best putter 
+from among the best ball-strikers".  I wanted to see if there was any truth to this statement.  The query above shows that 91 of the 242 tournament 
+winners in the dataset were indeed the highest ranked putter from among the top 10 in ball-striking.  So, the best putter from among the best ball-
+strikers seems to win about 38% of the time.
